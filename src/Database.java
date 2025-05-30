@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class Database {
      private static Connection connect() {
-         String url = "jdbc:sqlite:db\\data.db"; //Define a url do banco SQLite. Online ou local
+         String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/db/data.db";//Define a url do banco SQLite. Online ou local
          Connection connection = null;
 
          try {
@@ -32,9 +32,9 @@ public class Database {
 
         //Chama o método connect() para abrir uma conexão com o banco.
         Connection currentConnection = connect();
-
         try {
             //Usa currentConnection.createStatement() para criar um objeto que executa comandos SQL.
+
             Statement statement = currentConnection.createStatement();
             statement.execute(sql); //executa o sql passado como parâmetro
             currentConnection.close(); //Fecha a conexão
