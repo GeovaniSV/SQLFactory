@@ -56,28 +56,11 @@ do {
                     Database.inserirRegistro(produto);
                     break;
                 case 2:
-                    System.out.println("Qual o ID do produto que deseja alterar?");
+                    System.out.println("Digite o ID do produto que deseja alterar: ");
                     id = scanner.nextInt();
                     Database.abrirID(produto, id);
 
-                    System.out.println("Deseja alterar a descrição do projeto?");
-                    System.out.println("[ 1 ] Sim");
-                    System.out.println("[ 2 ] Não");
-                    resposta = scanner.nextInt();
-
-                    switch (resposta) {
-                        case 1:
-                            System.out.println("Digite a descrição do produto, ex: Café 500g");
-
-                            break;
-
-                        case 2:
-                            continue;
-
-                        default:
-                            continue;
-                    }
-
+                    System.out.println("Digite a descrição do produto: ");
                     scanner.nextLine();
                     descricao = scanner.nextLine();
                     produto.setDescricao(descricao);
@@ -109,10 +92,147 @@ do {
             break;
         case 2:
             System.out.println("Entrou tabela PESSOAS!");
+            System.out.println("<----------------------------------->");
+            System.out.println("O que deseja fazer na tabela?");
+            System.out.println("[ 1 ] INSERIR UM REGISTRO");
+            System.out.println("[ 2 ] ALTERAR UM REGISTRO");
+            System.out.println("[ 3 ] DELETAR UM REGISTRO");
+            resposta = scanner.nextInt();
+            switch (resposta) {
+                case 1:
+                    int id = 0;
+                    String nome;
+                    String sobrenome;
+                    String cpf;
+                    System.out.println("Qual o ID da pessoa? *Lembrando que não é possível ter o mesmo ID em dois registros diferentes");
+                    id = scanner.nextInt();
+                    pessoa.setId(id);
+
+                    System.out.println("Digite o nome da pessoa:  ");
+                    scanner.nextLine();
+                    nome = scanner.nextLine();
+                    pessoa.setNome(nome);
+
+                    System.out.println("Digite o sobrenome: ");
+                    sobrenome = scanner.nextLine();
+                    pessoa.setSobrenome(sobrenome);
+
+                    System.out.println("Digite o CPF: ");
+                    cpf = scanner.nextLine();
+                    pessoa.setCpf(cpf);
+
+                    Database.inserirRegistro(pessoa);
+                    break;
+                case 2:
+                    System.out.println("Digite o ID da pessoa que deseja alterar: ");
+                    id = scanner.nextInt();
+                    Database.abrirID(pessoa, id);
+
+                    System.out.println("Digite a novo nome da pessoa: ");
+                    scanner.nextLine();
+                    nome = scanner.nextLine();
+                    pessoa.setNome(nome);
+
+                    System.out.println("Digite o novo sobrenome: ");
+                    sobrenome = scanner.nextLine();
+                    pessoa.setSobrenome(sobrenome);
+
+                    System.out.println("Digite o novo CPF: ");
+                    cpf = scanner.nextLine();
+                    pessoa.setCpf(cpf);
+
+                    Database.atualizarRegistro(pessoa);
+                    break;
+                case 3:
+                    System.out.println("Qual o ID do registro que deseja deletar?");
+                    id = scanner.nextInt();
+                    pessoa.setId(id);
+                    Database.deletarRegistro(pessoa);
+                    System.out.println("Deletado com sucesso");
+                    break;
+
+                default:
+                    System.out.println("Opção não encontrada!");
+                    continue;
+
+            }
             break;
 
         case 3:
             System.out.println("Entrou na tabela LOJAS!");
+            System.out.println("<----------------------------------->");
+            System.out.println("O que deseja fazer na tabela?");
+            System.out.println("[ 1 ] INSERIR UM REGISTRO");
+            System.out.println("[ 2 ] ALTERAR UM REGISTRO");
+            System.out.println("[ 3 ] DELETAR UM REGISTRO");
+            resposta = scanner.nextInt();
+            switch (resposta) {
+                case 1:
+                    int id;
+                    String nome;
+                    String endereco;
+                    String telefone;
+                    String cnpj;
+                    System.out.println("Qual o ID da LOJA? *Lembrando que não é possível ter o mesmo ID em dois registros diferentes");
+                    id = scanner.nextInt();
+                    loja.setId(id);
+
+                    System.out.println("Digite o nome da loja: ");
+                    scanner.nextLine();
+                    nome = scanner.nextLine();
+                    loja.setNome(nome);
+
+                    System.out.println("Digite o endereço da loja: ");
+                    endereco = scanner.nextLine();
+                    loja.setEndereco(endereco);
+
+                    System.out.println("Digite o telefone da loja: ");
+                    telefone = scanner.nextLine();
+                    loja.setTelefone(telefone);
+
+                    System.out.println("Digite o cnpj da loja: ");
+                    cnpj = scanner.nextLine();
+                    loja.setCnpj(cnpj);
+
+                    Database.inserirRegistro(loja);
+                    break;
+                case 2:
+                    System.out.println("Digite o ID da LOJA que deseja alterar: ");
+                    id = scanner.nextInt();
+                    Database.abrirID(loja, id);
+
+                    System.out.println("Digite o novo nome da loja: ");
+                    scanner.nextLine();
+                    nome = scanner.nextLine();
+                    loja.setNome(nome);
+
+                    System.out.println("Digite o novo endereço da loja: ");
+                    endereco = scanner.nextLine();
+                    loja.setEndereco(endereco);
+
+                    System.out.println("Digite o novo telefone da loja: ");
+                    telefone = scanner.nextLine();
+                    loja.setTelefone(telefone);
+
+                    System.out.println("Digite o novo CNPJ da loja: ");
+                    cnpj = scanner.nextLine();
+                    loja.setCnpj(cnpj);
+
+                    Database.atualizarRegistro(loja);
+                    break;
+                case 3:
+                    System.out.println("Qual o ID do registro que deseja deletar?");
+                    id = scanner.nextInt();
+                    produto.setId(id);
+                    Database.deletarRegistro(loja);
+                    System.out.println("Deletado com sucesso");
+                    break;
+
+                default:
+                    System.out.println("Opção não encontrada!");
+                    continue;
+
+            }
             break;
 
         case 4:
