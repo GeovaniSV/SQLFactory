@@ -3,7 +3,7 @@ import java.lang.reflect.*;
 
 public abstract class SQLClass {
     private String tableName;
-    private String fildsList;
+    private String fieldsList;
     private String valuesList;
     private String fieldValuesList;
 
@@ -19,6 +19,8 @@ public abstract class SQLClass {
         int keyValue = 0;
         try {
             Object value = this.getClass().getDeclaredField(this.getKey()).get(this);
+            keyValue = (int) value;
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -62,7 +64,7 @@ public abstract class SQLClass {
             valuesString = valuesString + ", " + fieldValue;
         }
 
-        this.fildsList = fieldString.substring(1);
+        this.fieldsList = fieldString.substring(1);
         this.valuesList = valuesString.substring(1);
     }
 
@@ -96,10 +98,22 @@ public abstract class SQLClass {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            fieldValuesList = fieldValuesList + ", " + field.getName() + ", " + fieldValue;
+            fieldsValuesString = fieldsValuesString + ", " + field.getName() + " = " + fieldValue;
         }
 
         this.fieldValuesList = fieldsValuesString.substring(1);
+    }
+
+    public String getFieldValuesList() {
+        return fieldValuesList;
+    }
+
+    public String getFildsList() {
+        return fieldsList;
+    }
+
+    public String getValuesList() {
+        return valuesList;
     }
 
     public String getTableName() {
@@ -112,7 +126,7 @@ public abstract class SQLClass {
 
     public String insertSQL() {
         this.listFields();
-        return "insert into " + this.tableName + " (" + this.fildsList + " ) values (" + this.valuesList + ")";
+        return "insert into " + this.tableName + " (" + this.fieldsList + " ) values (" + this.valuesList + ")";
     }
 
     public String deleteSQL() {

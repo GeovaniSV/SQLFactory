@@ -65,7 +65,7 @@ public class Database {
 
     public static boolean atualizarRegistro(SQLClass registro){
         //Atualiza um objeto no banco de dados usando seu ID
-        return executeSQL((registro.updateSQL()));
+        return executeSQL(registro.updateSQL());
     }
 
     public static boolean deletarRegistro(SQLClass registro) {
